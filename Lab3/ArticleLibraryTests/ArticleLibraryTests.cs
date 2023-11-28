@@ -12,7 +12,7 @@ namespace ArticleLibraryTests
             //Act
 
             //Assert
-            Assert.No;
+            //Assert.No;
         }
         [Fact]
         public void Test2()

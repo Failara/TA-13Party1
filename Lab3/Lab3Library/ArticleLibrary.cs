@@ -1,9 +1,11 @@
-﻿namespace Lab3Library
+﻿using System.Globalization;
+
+namespace Lab3Library
 {
     public class ArticleLibrary
     {
-        private readonly List<string> topicCategories;
-        private readonly List<Article> articles;
+        public readonly List<string> topicCategories;
+        public readonly List<Article> articles;
         public ArticleLibrary()
         {
             topicCategories = [];
@@ -11,14 +13,15 @@
         }
         public void AddTopicCategory(string category)
         {
-            if (!topicCategories.Contains(category))
+            if (!topicCategories.Contains(category) && category!=null)
             {
                 topicCategories.Add(category);
             }
         }
         public void RemoveTopicCategory(string category)
         {
-            topicCategories.Remove(category);
+            if (category != null)
+                topicCategories.Remove(category);
         }
         public void AddArticle(string title, string author, string topicCategory)
         {
@@ -54,6 +57,7 @@
         {
             return articles.Where(a => a.IsFavorite).OrderByDescending(a => a.Title).ToList();
         }
+    
         public List<Article> GetArticlesByCategory(string topicCategory)
         {
             return articles.Where(a => a.TopicCategory == topicCategory).OrderByDescending(a => a.Title).ToList();
