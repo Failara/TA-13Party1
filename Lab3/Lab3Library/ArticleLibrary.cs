@@ -9,12 +9,10 @@ namespace Lab3Library
         public ArticleLibrary()
         {
             topicCategories = ["Drama", "Sport", "Comedy"];
-            articles =
-            [
+            articles = [
                 new() { Author = "Author1", Title = "Title1", TopicCategory = "Drama", IsFavorite = true },
                 new() { Author = "Author2", Title = "Title2", TopicCategory = "Sport", IsFavorite = false },
-                new() { Author = "Author3", Title = "Title3", TopicCategory = "Comedy", IsFavorite = false }
-            ];
+                new() { Author = "Author3", Title = "Title3", TopicCategory = "Comedy", IsFavorite = false }];
         }
         public void AddTopicCategory(string category)
         {

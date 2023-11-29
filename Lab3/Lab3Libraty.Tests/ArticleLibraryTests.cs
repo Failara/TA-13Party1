@@ -8,13 +8,13 @@ namespace Lab3Libraty.Tests
         {
             //Arrange
             var sut = new ArticleLibrary();
-            string expected = "drama";
-
+            string expected = "Abc";
+          
             //Act
             sut.AddTopicCategory(expected);
 
             //Assert
-            Assert.Equal(expected, sut.topicCategories[0]);
+            Assert.Contains(expected, sut.topicCategories);
         }
 
         [Fact]
@@ -156,9 +156,11 @@ namespace Lab3Libraty.Tests
             //Arrange
             var sut = new ArticleLibrary();
             string expected = "Author1";
+            var tc = "Drama";
+            
 
             //Assert + Act
-            Assert.Contains(sut.GetFavorites(), s => s.Author == expected);
+            Assert.Contains(sut.GetArticlesByCategory(tc), s => s.Author == expected);
         }
     }
 }
