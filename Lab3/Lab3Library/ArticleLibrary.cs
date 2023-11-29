@@ -8,12 +8,17 @@ namespace Lab3Library
         public readonly List<Article> articles;
         public ArticleLibrary()
         {
-            topicCategories = [];
-            articles = [];
+            topicCategories = ["Drama", "Sport", "Comedy"];
+            articles =
+            [
+                new() { Author = "Author1", Title = "Title1", TopicCategory = "Drama", IsFavorite = true },
+                new() { Author = "Author2", Title = "Title2", TopicCategory = "Sport", IsFavorite = false },
+                new() { Author = "Author3", Title = "Title3", TopicCategory = "Comedy", IsFavorite = false }
+            ];
         }
         public void AddTopicCategory(string category)
         {
-            if (!topicCategories.Contains(category) && category!=null)
+            if (!topicCategories.Contains(category) && category != null)
             {
                 topicCategories.Add(category);
             }
@@ -57,7 +62,6 @@ namespace Lab3Library
         {
             return articles.Where(a => a.IsFavorite).OrderByDescending(a => a.Title).ToList();
         }
-    
         public List<Article> GetArticlesByCategory(string topicCategory)
         {
             return articles.Where(a => a.TopicCategory == topicCategory).OrderByDescending(a => a.Title).ToList();

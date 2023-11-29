@@ -15,7 +15,6 @@ namespace Lab3Libraty.Tests
 
             //Assert
             Assert.Equal(expected, sut.topicCategories[0]);
-               
         }
 
         [Fact]
@@ -23,7 +22,7 @@ namespace Lab3Libraty.Tests
         {
             //Arrange
             var sut = new ArticleLibrary();
-            string ?expected = null;
+            string? expected = null;
 
             //Act
             sut.AddTopicCategory(expected);
@@ -59,7 +58,7 @@ namespace Lab3Libraty.Tests
             string t = "tittle";
             string a = "author";
             string tc = "drama";
-           
+
             //Act
             sut.AddArticle(t, a, tc);
 
@@ -92,7 +91,7 @@ namespace Lab3Libraty.Tests
             var sut = new ArticleLibrary();
             string a1 = "article 1";
             string a2 = "article 2";
-            
+
             sut.AddArticle(a1, a1, a1);
             sut.AddArticle(a2, a2, a2);
 
@@ -140,5 +139,26 @@ namespace Lab3Libraty.Tests
 
         }
 
+        [Fact]
+        public void GetFavorites_FavoritesExists_ReturnList()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string expected = "Author1";
+
+            //Assert + Act
+            Assert.Contains(sut.GetFavorites(), s => s.Author == expected);
+        }
+
+        [Fact]
+        public void GetArticlesByCategory_ArticlesByCategoryExists_ReturnList()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string expected = "Author1";
+
+            //Assert + Act
+            Assert.Contains(sut.GetFavorites(), s => s.Author == expected);
+        }
     }
 }
