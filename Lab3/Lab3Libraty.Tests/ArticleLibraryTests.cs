@@ -101,5 +101,72 @@ namespace Lab3Libraty.Tests
 
         }
 
+        [Fact]
+        public void AddToFavorites_CorrectFavorites_FavoritesAdded()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string t = "tittle";
+            string a = "author";
+            bool expected = true;
+            sut.AddArticle(t, a, a);
+
+            //Act
+            sut.AddToFavorites(t, a);
+
+            //Assert
+            Assert.Equal(expected, sut.articles[0].IsFavorite);
+
+        }
+
+        [Fact]
+        public void RemoveFromFavorites_CorrectFavorites_FavoritesRemoved()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string t = "tittle";
+            string a = "author";
+            bool expected = true;
+
+            var test = new Article();
+            test.Title = t;
+            test.Author = a;
+            test.TopicCategory = a;
+            test.IsFavorite = expected;
+
+            sut.AddArticle(t, a, a);
+            sut.AddToFavorites(t, a);
+
+            //Act
+            sut.RemoveFromFavorites(t, a);
+
+            //Assert
+            Assert.DoesNotContain(test, sut.GetFavorites());
+
+        }
+
+        [Fact]
+        public void GetFavorites_FavoritesExists_ReturnList()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string expected = "Author1";
+
+            //Assert + Act
+            Assert.Contains(sut.GetFavorites(), s => s.Author == expected);
+        }
+
+        [Fact]
+        public void GetArticlesByCategory_ArticlesByCategoryExists_ReturnList()
+        {
+            //Arrange
+            var sut = new ArticleLibrary();
+            string expected = "Author1";
+            var tc = "Drama";
+
+
+            //Assert + Act
+            Assert.Contains(sut.GetArticlesByCategory(tc), s => s.Author == expected);
+        }
     }
 }
