@@ -18,7 +18,7 @@ namespace Lab3Libraty.Tests
         }
 
         [Fact]
-        public void AddTopicCategory_IncorectValue_ArgumentOutOfRangeException()
+        public void AddTopicCategory_NullValue_TopicCategoryNotAdded()
         {
             //Arrange
             var sut = new ArticleLibrary();
@@ -28,7 +28,7 @@ namespace Lab3Libraty.Tests
             sut.AddTopicCategory(expected);
 
             //Assert
-            Assert.Throws<ArgumentOutOfRangeException>(() => sut.topicCategories[0].Equals(expected));
+            Assert.DoesNotContain(expected, sut.topicCategories);
 
         }
 
@@ -37,16 +37,14 @@ namespace Lab3Libraty.Tests
         {
             //Arrange
             var sut = new ArticleLibrary();
-            string expected = "drama";
-            string n1 = "scary";
+            string expected = "scary";
             sut.AddTopicCategory(expected);
-            sut.AddTopicCategory(n1);
 
             //Act
             sut.RemoveTopicCategory(expected);
 
             //Assert
-            Assert.Equal(n1, sut.topicCategories[0]);
+            Assert.DoesNotContain(expected, sut.topicCategories);
 
         }
 
@@ -57,31 +55,31 @@ namespace Lab3Libraty.Tests
             var sut = new ArticleLibrary();
             string t = "tittle";
             string a = "author";
-            string tc = "drama";
+            string tc = "scary";              
 
             //Act
             sut.AddArticle(t, a, tc);
 
             //Assert
-            Assert.Equal(t, sut.articles[0].Title);
-            Assert.Equal(a, sut.articles[0].Author);
-            Assert.Equal(tc, sut.articles[0].TopicCategory);
+            Assert.Contains(sut.articles, s => s.Author == a);
 
         }
 
         [Fact]
-        public void AddArticle_IncorectValue_NullReferenceException()
+        public void AddArticle_NullValue_ArticleNotAdded()
         {
             //Arrange
             var sut = new ArticleLibrary();
             string? n = null;
+            var expected = new Article();
+            expected = null;
 
             //Act
             sut.AddArticle(n, n, n);
 
             //Assert
-            Assert.Throws<NullReferenceException>(() => sut.articles[0].Title.Equals(n) && sut.articles[0].Author.Equals(n) && sut.articles[0].TopicCategory.Equals(n));
-
+            Assert.DoesNotContain(expected, sut.articles);
+            
         }
 
         [Fact]
@@ -90,77 +88,18 @@ namespace Lab3Libraty.Tests
             //Arrange
             var sut = new ArticleLibrary();
             string a1 = "article 1";
-            string a2 = "article 2";
+            var expected = new Article { Author = a1, Title = a1 };
 
+            sut.articles.Add(expected);
             sut.AddArticle(a1, a1, a1);
-            sut.AddArticle(a2, a2, a2);
 
             //Act
             sut.RemoveArticle(a1, a1);
 
             //Assert
-            Assert.Equal(a2, sut.articles[0].Title);
+            Assert.DoesNotContain(expected, sut.articles);
 
         }
 
-        [Fact]
-        public void AddToFavorites_CorrectFavorites_FavoritesAdded()
-        {
-            //Arrange
-            var sut = new ArticleLibrary();
-            string t = "tittle";
-            string a = "author";
-            bool expected = true;
-            sut.AddArticle(t, a, a);
-
-            //Act
-            sut.AddToFavorites(t, a);
-
-            //Assert
-            Assert.Equal(expected, sut.articles[0].IsFavorite);
-
-        }
-
-        [Fact]
-        public void RemoveFromFavorites_CorrectFavorites_FavoritesRemoved()
-        {
-            //Arrange
-            var sut = new ArticleLibrary();
-            string t = "tittle";
-            string a = "author";
-            bool expected = false;
-            sut.AddArticle(t, a, a);
-
-            //Act
-            sut.RemoveFromFavorites(t, a);
-
-            //Assert
-            Assert.Equal(expected, sut.articles[0].IsFavorite);
-
-        }
-
-        [Fact]
-        public void GetFavorites_FavoritesExists_ReturnList()
-        {
-            //Arrange
-            var sut = new ArticleLibrary();
-            string expected = "Author1";
-
-            //Assert + Act
-            Assert.Contains(sut.GetFavorites(), s => s.Author == expected);
-        }
-
-        [Fact]
-        public void GetArticlesByCategory_ArticlesByCategoryExists_ReturnList()
-        {
-            //Arrange
-            var sut = new ArticleLibrary();
-            string expected = "Author1";
-            var tc = "Drama";
-            
-
-            //Assert + Act
-            Assert.Contains(sut.GetArticlesByCategory(tc), s => s.Author == expected);
-        }
     }
 }

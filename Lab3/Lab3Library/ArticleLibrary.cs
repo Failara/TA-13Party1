@@ -28,7 +28,8 @@ namespace Lab3Library
         }
         public void AddArticle(string title, string author, string topicCategory)
         {
-            AddTopicCategory(topicCategory);
+            if (title != null && author != null && topicCategory != null)
+                AddTopicCategory(topicCategory);
             var article = new Article { Title = title, Author = author, TopicCategory = topicCategory };
             articles.Add(article);
         }
