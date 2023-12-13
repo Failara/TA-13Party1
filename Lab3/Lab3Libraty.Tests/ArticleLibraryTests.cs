@@ -1,5 +1,5 @@
 using Lab3Library;
-namespace Lab3Libraty.Tests
+namespace Lab3LibraryTests
 {
     public class ArticleLibraryTests
     {
@@ -9,7 +9,7 @@ namespace Lab3Libraty.Tests
             //Arrange
             var sut = new ArticleLibrary();
             string expected = "Abc";
-          
+
             //Act
             sut.AddTopicCategory(expected);
 
@@ -55,7 +55,7 @@ namespace Lab3Libraty.Tests
             var sut = new ArticleLibrary();
             string t = "tittle";
             string a = "author";
-            string tc = "scary";              
+            string tc = "scary";
 
             //Act
             sut.AddArticle(t, a, tc);
@@ -79,7 +79,7 @@ namespace Lab3Libraty.Tests
 
             //Assert
             Assert.DoesNotContain(expected, sut.articles);
-            
+
         }
 
         [Fact]
