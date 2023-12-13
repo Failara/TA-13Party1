@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Lab3Library
+namespace Lab3Library.Core
 {
     public class ArticleLibrary
     {
@@ -10,9 +10,9 @@ namespace Lab3Library
         {
             topicCategories = ["Drama", "Sport", "Comedy"];
             articles = [
-                new() { Author = "Author1", Title = "Title1", TopicCategory = "Drama", IsFavorite = true },
-                new() { Author = "Author2", Title = "Title2", TopicCategory = "Sport", IsFavorite = false },
-                new() { Author = "Author3", Title = "Title3", TopicCategory = "Comedy", IsFavorite = false }];
+                new() { Author = "Ivan L", Title = "Theather", TopicCategory = "Drama", IsFavorite = true },
+                new() { Author = "Anastasia K", Title = "Competitions", TopicCategory = "Sport", IsFavorite = false },
+                new() { Author = "Uliana K", Title = "Stand-up", TopicCategory = "Comedy", IsFavorite = false }];
         }
         public void AddTopicCategory(string category)
         {

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Lab3Library.ConsoleApplication": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

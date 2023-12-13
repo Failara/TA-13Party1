@@ -1,4 +1,4 @@
-﻿namespace Lab3Library
+﻿namespace Lab3Library.Core
 {
     public class Article
     {

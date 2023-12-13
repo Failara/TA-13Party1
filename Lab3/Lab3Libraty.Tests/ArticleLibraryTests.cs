@@ -1,4 +1,4 @@
-using Lab3Library;
+using Lab3Library.Core;
 namespace Lab3LibraryTests
 {
     public class ArticleLibraryTests
